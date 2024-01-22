@@ -1,5 +1,25 @@
 #pragma once
-class RankingDispScene
+
+#include "SceneBase.h"
+#include "../Object/RankingDate.h"
+
+class RankingDispScene : public SceneBase
 {
+private:
+
+private:
+	int background_image;  //”wŒi‰æ‘œ
+	RankingDate* ranking;  //ƒ‰ƒ“ƒLƒ“ƒOî•ñ
+
+public:
+	RankingDispScene();
+	virtual ~RankingDispScene();
+
+	virtual void Initialize() override;
+	virtual eSceneType Update() override;
+	virtual void Draw() const override;
+	virtual void Finelize() override;
+
+	virtual eSceneType GetNowScene() const override;
 };
 

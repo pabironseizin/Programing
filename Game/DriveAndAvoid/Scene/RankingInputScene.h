@@ -1,5 +1,32 @@
 #pragma once
+
+#include "SceneBase.h"
+#include "../Object/RankingDate.h"
+
 class RankingInputScene
 {
+private:
+	int backgrpund_image;  //背景画像
+	RankingDate* ranking;  //ランキング情報
+	int score;  //スコア
+	char name[15];  //名前
+	int name_num;  //名前入力数
+	int cursor_x;  //カーソルX座標
+	int cursor_y;  //カーソルY座標
+
+public:
+	RankingInputScene();
+	virtual ~RankingInputScene();
+
+	virtual void Initialize() override;
+	virtual eSceneType Update() override;
+	virtual void Draw() const override;
+	virtual void Finelize() override;
+
+	virtual eSceneType GetNowScene() const override;
+
+private:
+	//名前入力
+	bool InputName();
 };
 
