@@ -16,7 +16,7 @@ public:
 
 	//ƒ{ƒ^ƒ““ü—Íæ“¾ˆ—
 	static bool GetButton(int button);  //‰Ÿ‚µ‘±‚¯‚Ä‚¢‚éŠÔ
-	static bool getButtonDown(int button);  //‰Ÿ‚µ‚½uŠÔ
+	static bool GetButtonDown(int button);  //‰Ÿ‚µ‚½uŠÔ
 	static bool GetButtonUp(int button);  //—£‚µ‚½uŠÔ
 
 	//ƒgƒŠƒK[“ü—Íæ“¾ˆ—
