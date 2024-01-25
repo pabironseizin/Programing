@@ -37,7 +37,7 @@ void Enemy::Draw() const
 	DrawRotaGraphF(location.x, location.y, 1.0, 0.0, image, TRUE);
 }
 
-void Enemy::Finelize()
+void Enemy::Finalize()
 {
 
 }

@@ -14,7 +14,7 @@ private:
 	int enemy_image[3];  //“G‰æ‘œ
 	int enemy_const[3];  //’Ê‚è‰ß‚¬‚½“GƒJƒEƒ“ƒg
 	Player* player;  //ƒvƒŒƒCƒ„[
-	Enemy* enemy;  //“G
+	Enemy** enemy;  //“G
 
 public:
 	GameMainScene();
@@ -23,7 +23,7 @@ public:
 	virtual void Initialize() override;
 	virtual eSceneType Update() override;
 	virtual void Draw() const override;
-	virtual void Finelize() override;
+	virtual void Finalize() override;
 
 	virtual eSceneType GetNowScene() const override;
 
