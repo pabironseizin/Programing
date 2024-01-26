@@ -78,7 +78,7 @@ eSceneType GameMainScene::Update()
             if (enemy[i] == nullptr)
             {
                 int type = GetRand(3) % 3;
-                enemy[i] = new Enemy(type, enemy[type]);
+                enemy[i] = new Enemy(type, enemy_image[type]);
                 enemy[i]->Initialize();
                 break;
             }
@@ -218,4 +218,61 @@ void GameMainScene::Finalize()
     fclose(fp);
 
     //動的保護したオブジェクトを削除する
+    player->Finalize();
+    delete player;
+
+    for (int i = 0; i < 10; i++)
+    {
+        if (enemy[i] != nullptr)
+        {
+            enemy[i]->Finalize();
+            delete enemy[i];
+            enemy[i] = nullptr;
+        }
+    }
+
+    delete[] enemy;
+}
+
+//現在のシーン情報を取得
+eSceneType GameMainScene::GetNowScene() const
+{
+    return eSceneType::E_MAIN;
+}
+
+//ハイスコアの読み込み
+void GameMainScene::ReadHighScore()
+{
+    RankingDate data;
+    data.Initialize();
+
+    high_score = data.GetScore(0);
+
+    data.Finalize();
+}
+
+//当たり判定処理（プレイヤーと敵）
+bool GameMainScene::IsHitCheck(Player* p, Enemy* e)
+{
+    //プレイヤーがバリアを貼っていたら、当たり判定を無視する
+    if (p->IsBarrier())
+    {
+        return false;
+    }
+
+    //敵情報が無ければ、当たり判定を無視する
+    if (e == nullptr)
+    {
+        return false;
+    }
+
+    //位置情報の差分を取得
+    Vector2D diff_location = p->GetLocation() - e->GetLocation();
+
+    //当たり判定サイズの大きさを取得
+    Vector2D box_ex = p->GetBoxSize() + e->GetBoxSize();
+
+    //コリジョンデータより位置情報の差分が小さいなら、ヒット判定とする
+    return((fabsf(diff_location.x) < box_ex.x) && (fabsf(diff_location.y) < 
+box_ex.y));
 }

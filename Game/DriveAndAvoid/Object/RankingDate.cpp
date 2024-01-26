@@ -51,7 +51,7 @@ void RankingDate::Initialize()
 }
 
 //I—¹ˆ—
-void RankingDate::Finelize()
+void RankingDate::Finalize()
 {
 
 }

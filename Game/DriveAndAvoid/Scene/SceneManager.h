@@ -5,7 +5,7 @@
 //固定化するフレームレート値
 #define TARGET_FREAM_RATE  (60)
 //1フレーム当たりの時間（マイクロ秒）
-#define DELTE_SECOND  (1000000 / TARGET_FREAM_RATE)
+#define DELTA_SECOND  (1000000 / TARGET_FREAM_RATE)
 
 //シーンマネージャークラス
 class SceneManager
@@ -19,7 +19,7 @@ public:
 
 	void Initialize();  //初期化処理
 	void Update();  //更新処理
-	void Finelize();  //終了時処理
+	void Finalize();  //終了時処理
 
 private:
 	void Draw() const;  //描画処理

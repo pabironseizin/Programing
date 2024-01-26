@@ -102,7 +102,7 @@ void Player::Draw()
 }
 
 //I—¹ˆ—
-void Player::Finelize()
+void Player::Finalize()
 {
     //“Ç‚İ‚ñ‚¾‰æ‘œ‚ğíœ
     DeleteGraph(image);

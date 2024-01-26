@@ -12,7 +12,7 @@ public:
 	~RankingDate();
 
 	void Initialize();  //初期処理
-	void Finelize();  //終了処理
+	void Finalize();  //終了処理
 
 public:
 	//ランキングデータの設定
