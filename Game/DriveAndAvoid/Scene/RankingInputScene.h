@@ -3,7 +3,7 @@
 #include "SceneBase.h"
 #include "../Object/RankingDate.h"
 
-class RankingInputScene
+class RankingInputScene : public SceneBase
 {
 private:
 	int backgrpund_image;  //”wŒi‰æ‘œ

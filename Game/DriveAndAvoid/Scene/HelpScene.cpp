@@ -56,7 +56,7 @@ void HelpScene::Draw() const
 }
 
 //I—¹ˆ—
-void HelpScene::Finelize()
+void HelpScene::Finalize()
 {
 	//“Ç‚İ‚ñ‚¾‰æ‘œ‚Ìíœ
 	DeleteGraph(background_image);

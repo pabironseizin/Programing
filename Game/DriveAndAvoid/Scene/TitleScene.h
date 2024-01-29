@@ -19,7 +19,7 @@ public:
 	virtual void Initialize() override;
 	virtual eSceneType Update() override;
 	virtual void Draw() const override;
-	virtual void Finelize() override;
+	virtual void Finalize() override;
 
 	virtual eSceneType GetNowScene() const override;
 };
