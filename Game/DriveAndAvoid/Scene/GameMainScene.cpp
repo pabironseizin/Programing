@@ -4,14 +4,12 @@
 #include <math.h>
 
 GameMainScene::GameMainScene() : high_score(0), back_ground(NULL),
-barrier_image(NULL),
-                                            mileage(0), player(nullptr),
-enemy(nullptr)
+barrier_image(NULL), mileage(0), player(nullptr),enemy(nullptr)
 {
     for (int i = 0; i < 3; i++)
     {
         enemy_image[i] = NULL;
-        enemy_const[i] = NULL;
+        enemy_count[i] = NULL;
     }
 }
 
@@ -29,8 +27,7 @@ void GameMainScene::Initialize()
     //画像の読み込み
     back_ground = LoadGraph("Resource/images/back.bmp");
     barrier_image = LoadGraph("Resource/images/barrier.png");
-    int result = LoadDivGraph("Resource/images/car.bmp", 3, 3, 1, 63, 120,
-enemy_image);
+    int result = LoadDivGraph("Resource/images/car.bmp", 3, 3, 1, 63, 120,enemy_image);
 
     //エラーチェック
     if (back_ground == -1)
@@ -95,7 +92,7 @@ eSceneType GameMainScene::Update()
             //画面外に行ったら、敵を削除してスコア加算
             if (enemy[i]->GetLocation().y >= 640.0f)
             {
-                enemy_const[enemy[i]->GetType()]++;
+                enemy_count[enemy[i]->GetType()]++;
                 enemy[i]->Finalize();
                 delete enemy[i];
                 enemy[i] = nullptr;
@@ -152,7 +149,7 @@ void GameMainScene::Draw() const
         DrawRotaGraph(523 + (i * 50), 120, 0.3, 0, enemy_image[i], TRUE,
 FALSE);
         DrawFormatString(510 + (i * 50), 140, GetColor(255, 255, 255), "%03d",
-enemy_const[i]);
+enemy_count[i]);
     }
     DrawFormatString(510, 200, GetColor(0, 0, 0), "走行距離");
     DrawFormatString(555, 220, GetColor(255, 255, 255), "%08d", mileage / 10);
@@ -191,7 +188,7 @@ void GameMainScene::Finalize()
     int score = (mileage / 10 * 10);
     for (int i = 0; i < 3; i++)
     {
-        score += (i + 1) * 50 * enemy_const[i];
+        score += (i + 1) * 50 * enemy_count[i];
     }
 
     //リザルトデータの書き込み
@@ -211,7 +208,7 @@ void GameMainScene::Finalize()
     //避けた数と得点を保存
     for (int i = 0; i < 3; i++)
     {
-        fprintf(fp, "%d,\n", enemy_const[i]);
+        fprintf(fp, "%d,\n", enemy_count[i]);
     }
 
     //ファイルクローズ
