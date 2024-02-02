@@ -6,7 +6,7 @@
 class RankingInputScene : public SceneBase
 {
 private:
-	int backgrpund_image;  //”wŒi‰æ‘œ
+	int background_image;  //”wŒi‰æ‘œ
 	RankingDate* ranking;  //ƒ‰ƒ“ƒLƒ“ƒOî•ñ
 	int score;  //ƒXƒRƒA
 	char name[15];  //–¼‘O

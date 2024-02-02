@@ -2,10 +2,8 @@
 #include "../Utility/InputControl.h"
 #include "DxLib.h"
 
-RankingInputScene::RankingInputScene() : backgrpund_image(NULL),
-ranking(nullptr), score(0),
-                                                       name_num(0), cursor_x(0),
-cursor_y(0)
+RankingInputScene::RankingInputScene() : background_image(NULL),
+ranking(nullptr), score(0),name_num(0), cursor_x(0),cursor_y(0)
 {
     memset(name, NULL, (sizeof(char) * 15));
 }
@@ -19,10 +17,10 @@ RankingInputScene::~RankingInputScene()
 void RankingInputScene::Initialize()
 {
     //画像の読み込み
-    backgrpund_image = LoadGraph("Resource/images/Ranking.bmp");
+    background_image = LoadGraph("Resource/images/Ranking.bmp");
 
     //エラーチェック
-    if (backgrpund_image == -1)
+    if (background_image == -1)
     {
         throw("Resource/images/Ranking.bmpがありません?n");
     }
@@ -73,11 +71,11 @@ eSceneType RankingInputScene::Update()
 void RankingInputScene::Draw() const
 {
     //背景画像の描画
-    DrawGraph(0, 0, backgrpund_image, TRUE);
+    DrawGraph(0, 0, background_image, TRUE);
 
     //名前入力指示文字列の描画
     DrawString(150, 100, "ランキングに登録します", 0xFFFFFF);
-    DrawFormatString(100, 200, GetColor(255, 255, 255), ">%s", name);
+    DrawFormatString(100, 220, GetColor(255, 255, 255), ">%s", name);
 
     //選択用文字を描画
     const int font_size = 25;
@@ -104,8 +102,13 @@ FALSE);
     {
         if (cursor_x == 0)
         {
-            DrawBox(0, 0, font_size, font_size, GetColor(255, 255, 255),
-FALSE);
+            DrawBox(35, 400, 35 + font_size * 2, 400 + font_size,
+GetColor(255, 255, 255), FALSE);
+        }
+        else
+        {
+            DrawBox(80, 400, 80 + font_size * 2, 400 + font_size, GetColor(255, 255, 255),
+                FALSE);
         }
     }
 }
@@ -117,7 +120,7 @@ void RankingInputScene::Finalize()
     ranking->SetRankingDate(score, name);
 
     //読み込んだ画像を削除
-    DeleteGraph(backgrpund_image);
+    DeleteGraph(background_image);
 
     //動的メモリの解放
     delete ranking;
@@ -211,3 +214,4 @@ bool RankingInputScene::InputName()
 
     return false;
 }
+

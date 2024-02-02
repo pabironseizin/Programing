@@ -66,7 +66,7 @@ public:
 			return Vector2D(0.0f);
 		}
 
-		return Vector2D(this->x/scalar,this->y/scalar);
+		return Vector2D(this->x / scalar, this->y / scalar);
 	}
 	const Vector2D operator/(const Vector2D& location)
 	{
