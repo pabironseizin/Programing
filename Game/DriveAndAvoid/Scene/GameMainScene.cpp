@@ -1,5 +1,5 @@
 #include "GameMainScene.h"
-#include "../Object/RankingDate.h"
+#include "../Object/RankingData.h"
 #include "DxLib.h"
 #include <math.h>
 
@@ -37,7 +37,7 @@ void GameMainScene::Initialize()
 
     if (result == -1)
     {
-        throw("Resource/images/car.bmpがありません?n");
+        throw("Resource/images/car.bmpがありません?\n");
     }
     if (barrier_image == -1)
     {
@@ -239,7 +239,7 @@ eSceneType GameMainScene::GetNowScene() const
 //ハイスコアの読み込み
 void GameMainScene::ReadHighScore()
 {
-    RankingDate data;
+    RankingData data;
     data.Initialize();
 
     high_score = data.GetScore(0);

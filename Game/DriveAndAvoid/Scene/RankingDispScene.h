@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SceneBase.h"
-#include "../Object/RankingDate.h"
+#include "../Object/RankingData.h"
 
 class RankingDispScene : public SceneBase
 {
@@ -9,7 +9,7 @@ private:
 
 private:
 	int background_image;  //背景画像
-	RankingDate* ranking;  //ランキング情報
+	RankingData* ranking;  //ランキング情報
 
 public:
 	RankingDispScene();

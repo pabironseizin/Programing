@@ -25,7 +25,7 @@ void RankingDispScene::Initialize()
 	}
 
 	//ƒ‰ƒ“ƒLƒ“ƒOî•ñ‚ðŽæ“¾
-	ranking = new RankingDate;
+	ranking = new RankingData;
 	ranking->Initialize();
 }
 

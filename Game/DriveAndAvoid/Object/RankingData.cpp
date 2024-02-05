@@ -1,8 +1,8 @@
-#include "RankingDate.h"
+#include "RankingData.h"
 #include <stdio.h>
 #include <string.h>
 
-RankingDate::RankingDate()
+RankingData::RankingData()
 {
 	for (int i = 0; i < 6; i++)
 	{
@@ -15,13 +15,13 @@ RankingDate::RankingDate()
 	}
 }
 
-RankingDate::~RankingDate()
+RankingData::~RankingData()
 {
 
 }
 
 //初期化処理
-void RankingDate::Initialize()
+void RankingData::Initialize()
 {
 	//ランキングデータの読み込み
 	FILE* fp = nullptr;
@@ -51,13 +51,13 @@ void RankingDate::Initialize()
 }
 
 //終了処理
-void RankingDate::Finalize()
+void RankingData::Finalize()
 {
 
 }
 
 //データ設定処理
-void RankingDate::SetRankingDate(int score, const char* name)
+void RankingData::SetRankingData(int score, const char* name)
 {
 	this->score[5] = score;
 	strcpy_s(this->name[5], name);
@@ -66,25 +66,25 @@ void RankingDate::SetRankingDate(int score, const char* name)
 }
 
 //スコア取得処理
-int RankingDate::GetScore(int value) const
+int RankingData::GetScore(int value) const
 {
 	return score[value];
 }
 
 //ランク取得処理
-int RankingDate::GetRank(int value) const
+int RankingData::GetRank(int value) const
 {
 	return rank[value];
 }
 
 //名前取得処理
-const char* RankingDate::GetName(int value) const
+const char* RankingData::GetName(int value) const
 {
 	return name[value];
 }
 
 //データ入れ替え処理
-void RankingDate::SortData()
+void RankingData::SortData()
 {
 	//選択ソートを使用し、降順で入れ替える
 	for (int i = 0; i < 5; i++)

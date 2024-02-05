@@ -26,7 +26,7 @@ void RankingInputScene::Initialize()
     }
 
     //メモリの動的確保
-    ranking = new RankingDate;
+    ranking = new RankingData;
     ranking->Initialize();
 
     //リザルトデータを取得する
@@ -117,7 +117,7 @@ GetColor(255, 255, 255), FALSE);
 void RankingInputScene::Finalize()
 {
     //ランキングデータにデータを格納
-    ranking->SetRankingDate(score, name);
+    ranking->SetRankingData(score, name);
 
     //読み込んだ画像を削除
     DeleteGraph(background_image);
