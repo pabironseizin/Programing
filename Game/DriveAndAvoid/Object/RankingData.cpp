@@ -20,43 +20,43 @@ RankingData::~RankingData()
 
 }
 
-//初期化処理
+// 初期化処理
 void RankingData::Initialize()
 {
-	//ランキングデータの読み込み
+	// ラインキングデータの読み込み
 	FILE* fp = nullptr;
 
-	//ファイルオープン
+	// ファイルオープン
 	errno_t result = fopen_s(&fp, "Resource/dat/ranking_data.csv", "r");
 
-	//エラーチェック
+	// エラーチェック
 	if (result != 0)
 	{
-		throw("Resource/dat/ranking_data.csvが開けませんでした\n");
+		throw ("Resource/dat/ranking_data.csvが開けませんでした\n");
 	}
 
-	//対象ファイルから読み込む
+	// 対象ファイルから読み込む
 	for (int i = 0; i < 5; i++)
 	{
 		fscanf_s(fp, "%6d,%2d,%[^,],\n", &score[i], &rank[i], name[i], 15);
 	}
 
-	//ファイルクローズ
+	// ファイルクローズ
 	fclose(fp);
 
-	//末尾データの設定
+	// 末尾データの設定
 	score[5] = 0;
 	rank[5] = 0;
 	name[5][0] = '\0';
 }
 
-//終了処理
+// 終了処理
 void RankingData::Finalize()
 {
 
 }
 
-//データ設定処理
+// データ設定処理
 void RankingData::SetRankingData(int score, const char* name)
 {
 	this->score[5] = score;
@@ -65,28 +65,28 @@ void RankingData::SetRankingData(int score, const char* name)
 	SortData();
 }
 
-//スコア取得処理
+// スコア取得処理
 int RankingData::GetScore(int value) const
 {
 	return score[value];
 }
 
-//ランク取得処理
+// ランク取得処理
 int RankingData::GetRank(int value) const
 {
 	return rank[value];
 }
 
-//名前取得処理
+// 名前取得処理
 const char* RankingData::GetName(int value) const
 {
 	return name[value];
 }
 
-//データ入れ替え処理
+// データ入れ替え処理
 void RankingData::SortData()
 {
-	//選択ソートを使用し、降順で入れ替える
+	// 選択法ソートを使用し、降順で入れ替える
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = i + 1; j < 6; j++)
@@ -105,7 +105,7 @@ void RankingData::SortData()
 		}
 	}
 
-	//順位を整列させる
+	// 順位を整列させる
 	for (int i = 0; i < 5; i++)
 	{
 		rank[i] = 1;
@@ -121,24 +121,24 @@ void RankingData::SortData()
 		}
 	}
 
-	//ランキングデータの書き込み
+	// ランキングデータの書き込み
 	FILE* fp = nullptr;
 
-	//ファイルオープン
+	// ファイルオープン
 	errno_t result = fopen_s(&fp, "Resource/dat/ranking_data.csv", "w");
 
-	//エラーチェック
+	// エラーチェック
 	if (result != 0)
 	{
-		throw("Resource/dat/ranking_data.csvが開けませんでした\n");
+		throw ("Resource/dat/ranking_data.csvが開けませんでした\n");
 	}
 
-	//対象ファイルに書き込み
+	// 対象ファイルに書き込み
 	for (int i = 0; i < 5; i++)
 	{
 		fprintf(fp, "%d,%d,%s,\n", score[i], rank[i], name[i]);
 	}
 
-	//ファイルクローズ
+	// ファイルクローズ
 	fclose(fp);
 }
